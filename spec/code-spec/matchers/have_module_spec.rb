@@ -5,13 +5,12 @@ describe 'module matcher' do
     no_module = %q{
         class Hello
           def hello
+            blip
           end
         end}    
     
     it "should not have module Hello" do            
-      no_module.should_not have_module :Hello do |content|
-        puts content
-      end
+      no_module.should_not have_module :Hello
     end
   end
   
@@ -24,7 +23,7 @@ describe 'module matcher' do
     
     it "should have module Hello" do            
       with_module.should have_module :Hello do |content|
-        puts content
+        content.should_not be_empty
       end
     end
   end

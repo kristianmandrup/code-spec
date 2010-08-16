@@ -19,9 +19,7 @@ describe 'class_self matcher' do
       end # class self}    
 
     it "should have class << self" do            
-      class_self.should have_class_self do |content|
-        puts "content: #{content}"
-      end
+      class_self.should have_class_self
     end
   end
 end

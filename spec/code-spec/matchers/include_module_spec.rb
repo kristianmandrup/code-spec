@@ -9,9 +9,7 @@ describe 'include module matcher' do
         end}    
     
     it "should not have include Greeting" do            
-      no_include.should_not include_module :greeting do |content|
-        puts content
-      end
+      no_include.should_not include_module :greeting
     end
   end
   
@@ -26,7 +24,7 @@ describe 'include module matcher' do
     
     it "should have include Greeting" do            
       with_module.should include_module :greeting do |content|
-        puts content
+        content.should_not be_empty
       end
     end
   end

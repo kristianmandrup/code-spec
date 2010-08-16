@@ -9,9 +9,7 @@ describe 'subclass matcher' do
         end}    
     
     it "should not have subclass Greeting" do            
-      no_subclass.should_not have_subclass :hello, :greeting do |content|
-        puts content
-      end
+      no_subclass.should_not have_subclass :hello, :greeting
     end
   end
   
@@ -24,7 +22,7 @@ describe 'subclass matcher' do
     
     it "should not have subclass Greeting" do            
       with_subclass.should have_subclass :hello, :greeting do |content|
-        puts content
+        content.should_not be_empty
       end
     end
   end

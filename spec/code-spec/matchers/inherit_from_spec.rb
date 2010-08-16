@@ -9,9 +9,7 @@ describe 'inherit matcher' do
         end}    
 
     it "should not inherit from Greeting" do            
-      no_subclass.should_not inherit_from :greeting do |content|
-        puts content
-      end
+      no_subclass.should_not inherit_from :greeting
     end
   end
 
@@ -22,9 +20,9 @@ describe 'inherit matcher' do
           end
         end}    
 
-    it "should not inherit_from Greeting" do            
+    it "should inherit_from Greeting" do            
       with_subclass.should inherit_from :greeting do |content|
-        puts content
+        content.should_not be_empty
       end
     end
   end

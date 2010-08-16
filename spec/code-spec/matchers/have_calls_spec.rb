@@ -11,9 +11,7 @@ describe 'method calls matcher' do
         }    
     
     it "should not have calls to x or y" do            
-      not_class_self.should_not have_calls :x, :y do |content|
-        puts content
-      end
+      not_class_self.should_not have_calls :x, :y
     end
   end
   
@@ -25,9 +23,7 @@ describe 'method calls matcher' do
         end}    
 
     it "should have calls to x and y" do            
-      class_self.should have_calls :x, :y do |content|
-        puts "content: #{content}"
-      end
+      class_self.should have_calls :x, :y
     end
   end
 
@@ -39,9 +35,7 @@ describe 'method calls matcher' do
         end}    
   
     it "should have calls: x(2) and y 3" do            
-      class_self.should have_calls :x => '2', :y => '3' do |content|
-        puts "content: #{content}"
-      end
+      class_self.should have_calls :x => '2', :y => '3'
     end
   end
 end

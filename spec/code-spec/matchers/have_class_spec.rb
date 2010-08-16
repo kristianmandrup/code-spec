@@ -10,7 +10,7 @@ describe 'module matcher' do
     
     it "should not have class Hello" do            
       no_class.should_not have_class :Hello do |content|
-        puts content
+        content.should_not be_empty
       end
     end
   end
@@ -24,7 +24,7 @@ describe 'module matcher' do
     
     it "should have class Hello" do            
       with_class.should have_class :Hello do |content|
-        puts content
+        content.should_not be_empty
       end
     end
   end
