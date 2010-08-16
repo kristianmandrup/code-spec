@@ -1,10 +1,3 @@
-# This method tries to see if a specific method is contained in the generated file.
-# It can operate (should) on either a file name or the raw content 
-#
-#   generated_file_name.should have_method "hello" # 'my/path/say_hello.rb'.should have_method "hello"
-#
-#   say_hello_file_content.should have_method "hello"
-#
 module RSpec::RubyContentMatchers
   class HaveComment < RSpec::RubyContentMatcher
     attr_accessor :comment
