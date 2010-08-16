@@ -1,6 +1,32 @@
 # Code spec
 
-Description goes here.
+RSpec 2 matchers to facilitate making specs regarding Ruby code files, f.ex as generated or modified/mutated by a code generator.
+
+## Install
+
+gem install code-spec
+
+## Usage
+
+See specs for examples on how to use it.
+
+Example: Nested DSL
+<pre>  ...   
+  with_subclass = %q{
+      class Hello < Greeting
+        def hello
+          # howdy
+        end
+      end}    
+  
+  it "should not have subclass Greeting" do            
+    with_subclass.should have_subclass :hello, :greeting do |content|
+      content.should have_method :hello do |hello|
+        hello.should have_comment 'howdy'
+      end
+    end
+  end
+</pre>
 
 ## Note on Patches/Pull Requests
  
