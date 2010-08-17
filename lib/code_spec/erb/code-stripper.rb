@@ -1,5 +1,5 @@
-module CodeSpec
-  module Erb
+module Erb
+  module Code
     class << self
       attr_accessor :debug
 
@@ -19,13 +19,13 @@ end
 
 class String
   def erb_code code  
-    CodeSpec::Erb.get_code code
+    Erb::Code.get_code code
   end
 end
 
 class File
   def erb_code  
-    CodeSpec::Erb.get_code File.read(self)
+    Erb::Code.get_code File.read(self)
   end
 end
     
