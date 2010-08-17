@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{code-spec}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kristian Mandrup"]
@@ -24,19 +24,25 @@ Gem::Specification.new do |s|
      "README.markdown",
      "Rakefile",
      "VERSION",
+     "code-spec.gemspec",
      "lib/code-spec.rb",
+     "lib/code_spec/content_helpers.rb",
+     "lib/code_spec/core_ext.rb",
      "lib/code_spec/matchers/content_matcher.rb",
      "lib/code_spec/matchers/have_block.rb",
      "lib/code_spec/matchers/have_call.rb",
      "lib/code_spec/matchers/have_calls.rb",
      "lib/code_spec/matchers/have_class_self.rb",
      "lib/code_spec/matchers/have_comment.rb",
+     "lib/code_spec/matchers/have_content.rb",
      "lib/code_spec/matchers/have_method.rb",
      "lib/code_spec/matchers/have_module.rb",
      "lib/code_spec/matchers/have_region.rb",
      "lib/code_spec/matchers/have_subclass.rb",
      "lib/code_spec/matchers/include_module.rb",
      "lib/code_spec/matchers/inherit_from.rb",
+     "lib/code_spec/matchers/match_lines.rb",
+     "spec/code-spec/fixtures/logfile.log",
      "spec/code-spec/matchers/class_self_spec.rb",
      "spec/code-spec/matchers/have_block_spec.rb",
      "spec/code-spec/matchers/have_call_spec.rb",
@@ -48,6 +54,7 @@ Gem::Specification.new do |s|
      "spec/code-spec/matchers/have_subclass_spec.rb",
      "spec/code-spec/matchers/include_module_spec.rb",
      "spec/code-spec/matchers/inherit_from_spec.rb",
+     "spec/code-spec/matchers/match_content_spec.rb",
      "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/kristianmandrup/code-spec}
@@ -67,6 +74,7 @@ Gem::Specification.new do |s|
      "spec/code-spec/matchers/have_subclass_spec.rb",
      "spec/code-spec/matchers/include_module_spec.rb",
      "spec/code-spec/matchers/inherit_from_spec.rb",
+     "spec/code-spec/matchers/match_content_spec.rb",
      "spec/spec_helper.rb"
   ]
 

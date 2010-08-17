@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'inherit matcher' do    
   context "content with class that inherits from Greeting" do
-    logfile = File.expand_path(File.dirname(__FILE__) + '/../fixtures/logfile.log')
+    logfile = File.join(fixtures_dir, 'logfile.log')
 
     it "content should match some lines" do            
       logfile.should have_content do |content|
