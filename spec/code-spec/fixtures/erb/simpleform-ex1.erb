@@ -1,0 +1,17 @@
+<%= simple_form_for @user do |f| %>
+  <%= f.input :username, :label_html => { :class => 'my_class' } %>
+  <%= f.input :password, :hint => false, :error_html => { :id => "password_error"} %>
+  <%= f.input :password_confirmation, :label => false %>
+  <%= f.input :time_zone, :priority => /US/%>
+  <%= f.error :username, :id => 'user_name_error' %>
+  <%= f.hint 'No special characters, please!' %>
+  <%= f.association :company %>
+  <%= f.association :role %>
+  
+  <%= f.association :companies, :as => :radio %>
+  <%= f.association :roles,   :as => :check_boxes %>
+  
+  <%= f.button :submit %>  
+  <%= f.button :submit %>
+  <%= f.submit 'Save' %>  
+<% end %>

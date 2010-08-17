@@ -1,6 +1,6 @@
 module Erb::SimpleForm
   module ContentMatchers
-    def have_simple_form_block name
+    def have_simple_form_for name
       have_block :simple_form_for, :args => name
     end
 

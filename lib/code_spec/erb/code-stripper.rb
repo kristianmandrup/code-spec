@@ -18,8 +18,8 @@ module Erb
 end
 
 class String
-  def erb_code code  
-    Erb::Code.get_code code
+  def erb_code  
+    Erb::Code.get_code self
   end
 end
 
