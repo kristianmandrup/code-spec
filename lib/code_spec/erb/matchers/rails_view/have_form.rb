@@ -2,7 +2,7 @@ module Erb::RailsForm
   module Base
     module ContentMatchers
       def have_form_block name
-        HaveBlock.new(:form_for, :args => name)
+        have_block :form_for, :args => name
       end
 
       def self.form_helpers
@@ -13,7 +13,7 @@ module Erb::RailsForm
         class_eval %{
           def have_#{name} obj_name, args=nil  
             args = args ? ":name => \#{obj_name}, \#{args}" : ":name => \#{obj_name}"
-            HaveDotCall.new(:#{name}, :args => args)
+            have_form_call :#{name}, :args => args
           end        
         }
       end
@@ -23,15 +23,15 @@ module Erb::RailsForm
   module Tags
     
     def have_field_set_tag legend
-      HaveDotCall.new(:field_set_tag, :args => "'#{legend}'")
+      have_form_call :field_set_tag, :args => "'#{legend}'"
     end
         
     def have_form_tag url
-      HaveDotCall.new(:form_tag, :args => "'#{url}'")            
+      have_form_call :form_tag, :args => "'#{url}'"
     end
         
     def have_password_field_tag name = "password"
-      HaveDotCall.new(:password_field_tag, :args => "'#{name}'")            
+      have_form_call :password_field_tag, :args => "'#{name}'"
     end
 
     def self.tags_list
@@ -42,7 +42,7 @@ module Erb::RailsForm
     tags_list.each do |name|
       class_eval %{
         def have_#{name} name
-          HaveDotCall.new(:#{name}, :args => "'\#{name}'")
+          have_form_call :#{name}, :args => "'\#{name}'"
         end
       }
     end
@@ -57,41 +57,37 @@ module Erb::RailsForm
     options_methods.each do |name|
       class_eval %{
         def have_#{name} name
-          HaveDotCall.new(:#{name})
+          have_form_call :#{name}
         end
       }
     end
 
-    def have_collection_select name             
-      HaveDotCall.new(:collection_select, :args => ":#{name}") 
-    end     
-    
-    def have_grouped_collection_select
-      HaveDotCall.new(:grouped_collection_select, :args => ":#{name}")       
+    def self.name_options_methods       
+      [ :collection_select, :grouped_collection_select, :select, :time_zone_select ]
     end
 
-    def have_select name
-      HaveDotCall.new(:select, :args => "'#{name}'")      
-    end
-    
-    def have_time_zone_select name
-      HaveDotCall.new(:time_zone_select, :args => "'#{name}'")
+    name_options_methods.each do |name|
+      class_eval %{
+        def have_#{name} name
+          have_form_call :collection_select, :args => ":#{name}"
+        end
+      }
     end
   end
 
   module Links
-    def have_button_to args 
-      HaveDotCall.new(:button_to, :args => args)
+    def self.link_methods       
+      [ :button_to, :link_to, :mail_to ]
     end
 
-    def have_link_to args 
-      HaveDotCall.new(:link_to, :args => name)
+    link_methods.each do |name|
+      class_eval %{
+        def have_#{name} args
+          have_form_call :collection_select, :args => args
+        end
+      }
     end
-
-    def have_mail_to args
-      HaveDotCall.new(:mail_to, :args => args)
-    end
-
+    
     def have_submit_button 
       HaveDotCall.new(:submit)
     end

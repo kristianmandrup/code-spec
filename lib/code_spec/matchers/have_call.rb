@@ -7,18 +7,23 @@
 #
 module RSpec::RubyContentMatchers
   class HaveCall < RSpec::RubyContentMatcher
-    attr_reader :method, :args, :dot
+    attr_reader :method, :args, :dot, :content
 
     def initialize(method, options = {})
       @method = method.to_s
-      @args = options[:args] || options if !options.kind_of? Hash
+      @args = case options
+      when Hash 
+        options[:args] 
+      else 
+        options
+      end
       @dot = options[:dot]
     end
 
     def matches?(content)
-      @content = content                        
+      @content = content 
       has_def = (content =~ /def(.*)#{method}/)
-      expr = if has_def
+      expr = if has_def || dot == :form
         /#{dot_expr}#{method}#{args_expr}/m        
       else
         /#{dot_expr}?#{method}#{args_expr}/m
@@ -46,8 +51,14 @@ module RSpec::RubyContentMatchers
     end
 
     def dot_expr
-      return Regexp.escape(dot) if dot.kind_of?(String)
-      dot == true ? "#{not_def}\." : not_def
+      case dot
+      when String
+        Regexp.escape(dot)
+      when Symbol
+        "#{content.form}\." if content.respond_to? :form
+      else
+        dot ? "#{not_def}\." : not_def
+      end
     end
                    
   end
@@ -57,6 +68,11 @@ module RSpec::RubyContentMatchers
   end  
 
   def have_dot_call(method, options = {})
-    HaveCall.new(method, options.merge(:dot => true))
+    have_call method, options.merge(:dot => true)
   end  
+  
+  def have_form_call(method, options = {})
+    have_call method, options.merge(:dot => :form)
+  end  
+  
 end

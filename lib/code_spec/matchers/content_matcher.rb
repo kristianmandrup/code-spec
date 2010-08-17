@@ -39,7 +39,7 @@ module RSpec
 
     def handle_result content, match, &block 
       if block && match && content
-        ruby_content = content.strip.extend(RSpec::RubyContent::Helpers)
+        ruby_content = content.strip #.extend(RSpec::RubyContent::Helpers)
         yield ruby_content        
       end
       match

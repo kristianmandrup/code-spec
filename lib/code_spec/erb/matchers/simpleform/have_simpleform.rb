@@ -1,15 +1,15 @@
 module Erb::SimpleForm
   module ContentMatchers
     def have_simple_form_block name
-      HaveBlock.new(:simple_form_for, :args => name)
+      have_block :simple_form_for, :args => name
     end
 
     def have_input name 
-      HaveDotCall.new(:input, :args => ":#{name}")
+      have_form_call :input, :args => ":#{name}"
     end
 
     def have_button name 
-      HaveDotCall.new(:button, :args => ":#{name}")
+      have_form_call :button, :args => ":#{name}"
     end
 
     def self.standard_inputs
@@ -21,13 +21,13 @@ module Erb::SimpleForm
     end
 
     def have_association name
-      HaveDotCall.new(:association, :args => ":#{name}")
+      have_form_call :association, :args => ":#{name}"
     end
 
     association_types.each do |name|
       class_eval %{
         def have_#{name.to_s.pluralize} name
-          HaveDotCall.new(:association, :args => ":\#{name}, :as => :#{name}")
+          have_form_call :association, :args => ":\#{name}, :as => :#{name}"
         end        
       }
     end
@@ -41,7 +41,7 @@ module Erb::SimpleForm
     end
 
     def have_commit_button 
-      HaveDotCall.new('commit_button')
+      have_form_call :commit_button
     end
   end
 end
