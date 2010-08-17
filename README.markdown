@@ -1,12 +1,17 @@
 # Code spec
 
 RSpec 2 matchers to facilitate making specs regarding Ruby code files, f.ex as generated or modified/mutated by a code generator.
+Also includes matchers to help spec ERB code that include either:
+
+* Standard rails forms
+* Formtastic
+* Simpleform  
 
 ## Install
 
 gem install code-spec
 
-## Usage
+## Usage: Basic code matchers
 
 See specs for examples on how to use it.
 
@@ -27,6 +32,32 @@ Example: Nested DSL
     end
   end
 </pre>
+
+## Usage: Form matchers
+
+*with_form_helper* is used to specify which form helper to use. It can be either:
+
+* :formtastic
+* :simpleform
+* :railsform
+
+<pre>
+describe 'Formtastic form matcher' do      
+  with_form_helper :formtastic
+
+  context "Formtastic example 1 view file" do
+    let(:form_file) { File.join erb_fixtures_dir, 'formtastic-ex1.erb' }
+
+    it "content should match form expectations" do      
+      form_file.should have_content do |content|
+        content.erb_code.should have_semantic_form_for '@article' do |form|
+          form.should have_inputs "Basic"
+        end
+      end
+    end
+  end
+end
+</pre>  
 
 ## Note on Patches/Pull Requests
  

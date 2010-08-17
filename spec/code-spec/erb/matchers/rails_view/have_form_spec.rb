@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'Rails 3 form matcher' do    
-  with_form_helper :rails_form
+  with_form_helper :railsform
   
   context "Rails 3 form example 1 view file" do
     form_file = File.join(erb_fixtures_dir, 'railsform-ex1.erb')
