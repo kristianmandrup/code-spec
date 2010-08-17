@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{code-spec}
-  s.version = "0.1.2"
+  s.version = "0.1.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kristian Mandrup"]
@@ -32,6 +32,9 @@ Gem::Specification.new do |s|
      "lib/code_spec/erb/code-stripper.rb",
      "lib/code_spec/erb/matchers/formtastic/have_formtastic.rb",
      "lib/code_spec/erb/matchers/rails_view/have_form.rb",
+     "lib/code_spec/erb/matchers/rails_view/helpers/links.rb",
+     "lib/code_spec/erb/matchers/rails_view/helpers/options.rb",
+     "lib/code_spec/erb/matchers/rails_view/helpers/tags.rb",
      "lib/code_spec/erb/matchers/simpleform/have_simpleform.rb",
      "lib/code_spec/matchers/content_matcher.rb",
      "lib/code_spec/matchers/have_block.rb",
@@ -50,8 +53,12 @@ Gem::Specification.new do |s|
      "spec/code-spec/erb/code-stripper_spec.rb",
      "spec/code-spec/erb/matchers/formtastic/have_formtastic_spec.rb",
      "spec/code-spec/erb/matchers/rails_view/have_form_spec.rb",
+     "spec/code-spec/erb/matchers/simpleform/have_simpleform_spec.rb",
+     "spec/code-spec/fixtures/erb/formtastic-ex1.erb",
+     "spec/code-spec/fixtures/erb/railsform-ex1.erb",
+     "spec/code-spec/fixtures/erb/simpleform-ex1.erb",
+     "spec/code-spec/fixtures/erb/view-file.erb",
      "spec/code-spec/fixtures/logfile.log",
-     "spec/code-spec/fixtures/view-file.erb",
      "spec/code-spec/matchers/class_self_spec.rb",
      "spec/code-spec/matchers/have_block_spec.rb",
      "spec/code-spec/matchers/have_call_spec.rb",
@@ -75,6 +82,7 @@ Gem::Specification.new do |s|
     "spec/code-spec/erb/code-stripper_spec.rb",
      "spec/code-spec/erb/matchers/formtastic/have_formtastic_spec.rb",
      "spec/code-spec/erb/matchers/rails_view/have_form_spec.rb",
+     "spec/code-spec/erb/matchers/simpleform/have_simpleform_spec.rb",
      "spec/code-spec/matchers/class_self_spec.rb",
      "spec/code-spec/matchers/have_block_spec.rb",
      "spec/code-spec/matchers/have_call_spec.rb",
