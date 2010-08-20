@@ -7,26 +7,28 @@
 #
 module RSpec::RubyContentMatchers
   class HaveCall < RSpec::RubyContentMatcher
-    attr_reader :method, :args, :dot, :content
+    attr_accessor :method_name, :args, :dot, :content
 
-    def initialize(method, options = {})
-      @method = method.to_s
-      @args = case options
-      when Hash 
+    def initialize(method_name, options = {})
+      self.method_name = method_name.to_s
+      self.args = case options
+      when Hash         
+        self.dot = options[:dot]
         options[:args] 
       else 
-        options
+        (options == {}) ? nil : options
       end
-      @dot = options[:dot]
+      
+      self.args = ":#{args}" if args.kind_of? Symbol      
     end
 
     def matches?(content)
       @content = content 
-      has_def = (content =~ /def(.*)#{method}/)
+      has_def = (content =~ /def(.*)#{method_name}/)
       expr = if has_def || dot == :form
-        /#{dot_expr}#{method}#{args_expr}/m        
+        /#{dot_expr}#{method_name}#{args_expr}/m        
       else
-        /#{dot_expr}?#{method}#{args_expr}/m
+        /#{dot_expr}?#{method_name}#{args_expr}/m
       end   
       debug "expr = #{expr}"
       debug "content = %{#{content}}"
@@ -36,12 +38,12 @@ module RSpec::RubyContentMatchers
   
     def failure_message
       super
-      "Expected there to be a call to #{method}#{args_msg}, but there wasn't"
+      "Expected there to be a call to #{method_name}#{args_msg}, but there wasn't"
     end 
     
     def negative_failure_message
       super
-      "Did not expect there to be a call to #{method}#{args_msg}, but there was"
+      "Did not expect there to be a call to #{method_name}#{args_msg}, but there was"
     end
              
     protected
@@ -63,16 +65,16 @@ module RSpec::RubyContentMatchers
                    
   end
   
-  def have_call(method, options = {})
-    HaveCall.new(method, options)
+  def have_call(method_name, options = {})
+    HaveCall.new(method_name, options)
   end  
 
-  def have_dot_call(method, options = {})
-    have_call method, options.merge(:dot => true)
+  def have_dot_call(method_name, options = {})
+    have_call method_name, options.merge(:dot => true)
   end  
   
-  def have_form_call(method, options = {})
-    have_call method, options.merge(:dot => :form)
+  def have_form_call(method_name, options = {})
+    have_call method_name, options.merge(:dot => :form)
   end  
   
 end
