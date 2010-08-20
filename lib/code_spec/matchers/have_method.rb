@@ -59,8 +59,12 @@ module RSpec::RubyContentMatchers
     HaveMethod.new(method, type)
   end  
 
+  def have_class_method(method)
+    have_method method, :class
+  end  
+
   def have_args_method(method, options = {})
-    HaveMethod.new(method, options[:type], options)
+    have_method method, options[:type], options
   end  
 
 end

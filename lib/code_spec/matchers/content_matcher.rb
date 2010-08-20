@@ -22,7 +22,7 @@ module RSpec
       @content = content
       match = is_match? content                                                        
       content_to_yield = if indexes
-        content_matches[indexes.first] || content_matches[indexes.last]
+        content_matches[indexes.last] || content_matches[indexes.first]
       else
         content_matches[index]
       end          

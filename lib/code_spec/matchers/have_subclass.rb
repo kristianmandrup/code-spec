@@ -34,7 +34,5 @@ module RSpec::RubyContentMatchers
   def have_subclass(klass, superclass, type=nil)
     HaveSubclass.new(klass, superclass, type)
   end    
-  alias_method :be_subclass, :have_subclass
-  
-
+  alias_method :be_subclass, :have_subclass  
 end
