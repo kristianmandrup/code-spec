@@ -51,8 +51,7 @@ module RSpec::RubyContentMatchers
             
     def alt_end
       'def'
-    end               
-    
+    end
   end
   
   def have_method(method, type = nil)
