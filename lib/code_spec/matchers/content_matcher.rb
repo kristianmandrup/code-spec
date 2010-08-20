@@ -76,7 +76,7 @@ module RSpec
     end
 
     def args_expr
-      args ? OPT_SPACES + opt(LPAR) + OPT_SPACES + "#{Regexp.escape(args)}" + OPT_SPACES + opt(RPAR) : ''
+      args ? OPT_SPACES + opt(LPAR) + OPT_SPACES + "#{args}" + OPT_SPACES + opt(RPAR) : ''
     end
 
     def main_expr

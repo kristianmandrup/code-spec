@@ -1,22 +1,22 @@
 require 'spec_helper'
 
 describe 'method call matcher' do    
-  # context "content without method call" do
-  #   not_call = %q{
-  #       def hello
-  #       end}    
-  #   
-  #   it "should not have call hello" do            
-  #     not_call.should_not have_call :hello
-  #   end
-  # end
-  # 
-  # context "content with call hello" do  
-  #   call = 'hello'
-  #   it "should have call to hello" do            
-  #     call.should have_call :hello
-  #   end
-  # end 
+  context "content without method call" do
+    not_call = %q{
+        def hello
+        end}    
+    
+    it "should not have call hello" do            
+      not_call.should_not have_call :hello
+    end
+  end
+  
+  context "content with call hello" do  
+    call = 'hello'
+    it "should have call to hello" do            
+      call.should have_call :hello
+    end
+  end 
   
   context "content with call hello" do  
     call = %q{
