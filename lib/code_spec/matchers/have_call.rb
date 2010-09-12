@@ -29,7 +29,8 @@ module RSpec::RubyContentMatchers
         /#{dot_expr}#{method_name}#{args_expr}/m        
       else
         /#{dot_expr}?#{method_name}#{args_expr}/m
-      end   
+      end
+      @expr = expr   
       debug "expr = #{expr}"
       debug "content = %{#{content}}"
       debug "content =~ #{expr}"      
@@ -38,7 +39,7 @@ module RSpec::RubyContentMatchers
   
     def failure_message
       super
-      "Expected there to be a call to #{method_name}#{args_msg}, but there wasn't"
+      "Expected there to be a call to #{method_name}#{args_msg}, but there wasn't. Regexp: #{@expr} did not match\n#{@content}"
     end 
     
     def negative_failure_message
