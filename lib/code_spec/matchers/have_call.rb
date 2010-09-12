@@ -24,8 +24,10 @@ module RSpec::RubyContentMatchers
 
     def matches?(content)
       @content = content 
-      has_def = (content =~ /def(.*)#{method_name}/)
-      expr = if has_def || dot == :form
+      def_pos = (content =~ /def(.*)#{method_name}/) || 999
+      call_pos = (content =~ /[^def]?#{method_name}/) || 999
+
+      expr = if (def_pos < call_pos) || dot == :form
         /#{dot_expr}#{method_name}#{args_expr}/m        
       else
         /#{dot_expr}?#{method_name}#{args_expr}/m
