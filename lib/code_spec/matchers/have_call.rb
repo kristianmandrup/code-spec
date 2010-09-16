@@ -32,7 +32,8 @@ module RSpec::RubyContentMatchers
         args_expr
       when Array 
         args.inject("") do |res, arg|
-          res << '(\s|,|\w|:)*' + arg.inspect
+          arg_val = (arg.kind_of?(String) && arg[0] == '#') ? arg[1..-1] : arg.inspect
+          res << '(\s|,|\w|:)*' + arg_val
         end
       else
         return nil
