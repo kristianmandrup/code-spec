@@ -1,5 +1,4 @@
-require 'rspec'
-require 'rspec/autorun'
+require 'rspec/core'
 require 'code-spec'
 
 def fixtures_dir

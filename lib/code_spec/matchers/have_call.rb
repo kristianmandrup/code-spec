@@ -27,10 +27,21 @@ module RSpec::RubyContentMatchers
       def_pos = (content =~ /def(.*)#{method_name}/) || 999
       call_pos = (content =~ /[^def]?#{method_name}/) || 999
 
-      expr = if (def_pos < call_pos) || dot == :form
-        /#{dot_expr}#{method_name}#{args_expr}/m        
+      arguments_expr = case args
+      when String
+        args_expr
+      when Array 
+        args.inject("") do |res, arg|
+          res << '(\s|,|\w|:)*' + arg.inspect
+        end
       else
-        /#{dot_expr}?#{method_name}#{args_expr}/m
+        return nil
+      end
+
+      expr = if (def_pos < call_pos) || dot == :form
+        /#{dot_expr}#{method_name}#{arguments_expr}/m        
+      else
+        /#{dot_expr}?#{method_name}#{arguments_expr}/m
       end
       @expr = expr   
       debug "expr = #{expr}"
