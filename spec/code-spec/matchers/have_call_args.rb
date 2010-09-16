@@ -17,6 +17,7 @@ describe 'method call matcher with args' do
     }
     it "should have call to hello" do            
       call.should have_call :devise, :args => ['#confirm_me', "hello"]
+      call.should have_call :devise, :args => [['#confirm_me', "hello"]]
       call.should_not have_call :devise, :args => ['#hello']      
     end
   end 
