@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{code-spec}
-  s.version = "0.2.4"
+  s.version = "0.2.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kristian Mandrup"]
@@ -44,6 +44,7 @@ Gem::Specification.new do |s|
      "lib/code_spec/matchers/match_lines.rb",
      "lib/code_spec/matchers/multi/have_classes_modules.rb",
      "lib/code_spec/matchers/multi/have_methods.rb",
+     "lib/code_spec/matchers/multi/have_subclasses.rb",
      "spec/code-spec/fixtures/logfile.log",
      "spec/code-spec/matchers/class_self_spec.rb",
      "spec/code-spec/matchers/have_block_spec.rb",
@@ -61,6 +62,7 @@ Gem::Specification.new do |s|
      "spec/code-spec/matchers/multi/have_classes_spec.rb",
      "spec/code-spec/matchers/multi/have_methods_spec.rb",
      "spec/code-spec/matchers/multi/have_modules_spec.rb",
+     "spec/code-spec/matchers/multi/have_subclasses_spec.rb",
      "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/kristianmandrup/code-spec}
@@ -85,6 +87,7 @@ Gem::Specification.new do |s|
      "spec/code-spec/matchers/multi/have_classes_spec.rb",
      "spec/code-spec/matchers/multi/have_methods_spec.rb",
      "spec/code-spec/matchers/multi/have_modules_spec.rb",
+     "spec/code-spec/matchers/multi/have_subclasses_spec.rb",
      "spec/spec_helper.rb"
   ]
 
