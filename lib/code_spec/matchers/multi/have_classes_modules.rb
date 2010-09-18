@@ -3,7 +3,7 @@ module RSpec::RubyContentMatchers
     attr_reader :name, :names, :type, :postfix
 
     def initialize(*names)
-      postfix = last_arg_value {:postfix => ''}, names
+      postfix = last_arg_value({:postfix => ''}, names)
       @names = names.to_strings  
       @postfix = postfix.to_s.camelize if postfix
       @type = :module
@@ -15,7 +15,7 @@ module RSpec::RubyContentMatchers
       @content = content
 
       names.each do |name|       
-        @name = name     
+        @name = name.camelize     
         @end_option = name        
         match = is_match? content
         return false if !match

@@ -1,6 +1,8 @@
-require 'rspec'
+require 'rspec/core'
 require 'require_all'      
 require 'active_support/inflector'      
+require 'sugar-high/arguments'
+require 'sugar-high/array'
 
 module RSpec
   module RubyContentMatchers

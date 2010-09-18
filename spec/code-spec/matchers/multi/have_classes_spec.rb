@@ -10,7 +10,7 @@ describe 'classes matcher' do
     }    
     
     it "should not have class X" do            
-      no_class.should_not have_classs :x
+      no_class.should_not have_classes :x
     end
   end
 
@@ -23,8 +23,8 @@ describe 'classes matcher' do
       end
     }    
     it "should have class x" do
-      class_x.should have_classs :x
-      class_x.should_not have_classs :x, :y
+      class_x.should have_classes [:x]
+      class_x.should_not have_classes :x, :y
     end
   end
   
@@ -43,7 +43,7 @@ describe 'classes matcher' do
       end
     }    
     it "should have classs x and y" do            
-      classs_x_y.should_not have_classs :x, :y
+      classs_x_y.should have_classes :x, :y
     end
   end
 end

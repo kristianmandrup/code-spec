@@ -11,7 +11,7 @@ module RSpec::RubyContentMatchers
 
     def initialize *methods
       options = last_option methods
-      @method = method.to_s
+      @names = methods.to_strings
       @type = options[:type]
       @args = options[:args]
     end
@@ -20,9 +20,8 @@ module RSpec::RubyContentMatchers
       return false if names.empty?
 
       @content = content
-
       names.each do |name|       
-        @name = name     
+        @method = name     
         @end_option = name        
         match = is_match? content
         return false if !match

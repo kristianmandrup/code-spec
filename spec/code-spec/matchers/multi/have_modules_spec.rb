@@ -43,7 +43,7 @@ describe 'modules matcher' do
       end
     }    
     it "should have modules x and y" do            
-      modules_x_y.should_not have_modules :x, :y
+      modules_x_y.should have_modules :x, :y
     end
   end
 end

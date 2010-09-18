@@ -22,6 +22,8 @@ describe 'method matcher' do
         end
     }    
     it "should have method hello" do            
+      with_method.should have_methods :hello
+      with_method.should_not have_methods :hi
       with_method.should_not have_methods :hello, :hi
     end
   end
