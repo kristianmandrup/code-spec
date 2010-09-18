@@ -5,7 +5,7 @@ module RSpec::RubyContentMatchers
     def initialize(*names)
       postfix = last_arg_value({:postfix => ''}, names)
       @names = names.to_strings  
-      @postfix = postfix.to_s.camelize if postfix
+      @postfix = postfix ? postfix.to_s.camelize : nil
       @type = :module
     end
 
@@ -14,8 +14,13 @@ module RSpec::RubyContentMatchers
 
       @content = content
 
+      return false if names.empty?
+
       names.each do |name|       
         @name = name.camelize     
+        @klass = name.camelize
+        @full_class = "#{@klass}#{@postfix}" 
+        
         @end_option = name        
         match = is_match? content
         return false if !match
