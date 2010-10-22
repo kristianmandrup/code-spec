@@ -13,12 +13,12 @@ module RSpec::RubyContentMatchers
   
     def failure_message
       super
-      "Expected the class to inherit from #{klass}"
+      "Expected the class to inherit from #{klass}\ncontent:#{content}"
     end 
     
     def negative_failure_message
       super
-      "Did not expect the class to inherit from #{klass}"
+      "Did not expect the class to inherit from #{klass}\ncontent:#{content}"
     end
     
     protected

@@ -17,6 +17,14 @@ module RSpec
     def debug?
       false
     end
+
+    def display_content
+      "\ncontent:#{content}"
+    end
+
+    def display msg
+      "#{msg}#{display_content}\nRegexp: #{@expr}\n#{@special_error}"
+    end
          
     def matches? content, &block
       @content = content
@@ -30,7 +38,8 @@ module RSpec
     end
 
     def is_match? content
-      expr = get_expr(content) 
+      expr = get_expr(content)
+      @expr = expr 
       debug "match expression: #{expr}"
       match = (content =~ expr)
       @content_matches = [$1, $2, $3]

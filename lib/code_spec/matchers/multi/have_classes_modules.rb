@@ -38,12 +38,12 @@ module RSpec::RubyContentMatchers
   
     def failure_message
       super
-      "Expected there to be the #{type} #{name}"
+      display "Expected there to be the #{type} #{name}"
     end 
     
     def negative_failure_message
       super
-      "Did not expected there to be the #{type} #{name}"
+      display "Did not expected there to be the #{type} #{name}"
     end
 
     protected

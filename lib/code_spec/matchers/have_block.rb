@@ -45,12 +45,12 @@ module RSpec::RubyContentMatchers
   
     def failure_message   
       super
-      return "Expected there to be a block #{name}#{args_msg}#{block_args_msg}, but there wasn't"
+      display "Expected there to be a block #{name}#{args_msg}#{block_args_msg}, but there wasn't"
     end 
     
     def negative_failure_message  
       super
-      return "Did not expect there to be a block #{name}#{args_msg}, but there was"
+      display "Did not expect there to be a block #{name}#{args_msg}, but there was"
     end               
     
     protected

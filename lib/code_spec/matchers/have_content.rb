@@ -14,11 +14,11 @@ module RSpec::RubyContentMatchers
     end
     
     def failure_message
-      "Expected the file #{file_path} to have content" 
+      display "Expected the file #{file_path} to have content" 
     end 
     
     def negative_failure_message
-      "Did not expect the file #{file_path} to have content" 
+      display "Did not expect the file #{file_path} to have content" 
     end    
   end
 

@@ -14,12 +14,12 @@ module RSpec::RubyContentMatchers
   
     def failure_message
       super
-      "Expected there to be an inclusion of module #{module_name}"
+      display "Expected there to be an inclusion of module #{module_name}"
     end 
     
     def negative_failure_message
       super
-      "Did not expect there to be an inclusion of module #{module_name}"
+      display "Did not expect there to be an inclusion of module #{module_name}"
     end
                
   end

@@ -13,12 +13,12 @@ module RSpec::RubyContentMatchers
   
     def failure_message
       super
-      "Expected there to be the comment '# #{comment}'" 
+      display "Expected there to be the comment '# #{comment}'" 
     end 
     
     def negative_failure_message
       super
-      "Did not expect there to be the comment '# #{comment}'" 
+      display "Did not expect there to be the comment '# #{comment}'" 
     end
 
     protected

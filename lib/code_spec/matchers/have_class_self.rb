@@ -14,12 +14,12 @@ module RSpec::RubyContentMatchers
   
     def failure_message
       super
-      return "Expected there to be a: class << self"
+      display "Expected there to be a: class << self"
     end 
     
     def negative_failure_message
       super
-      "Did not expect there to be a: class << self"
+      display "Did not expect there to be a: class << self"
     end
 
     protected

@@ -9,12 +9,12 @@ module RSpec::RubyContentMatchers
   
     def failure_message 
       super
-      "Expected there to be a #{region} region"
+      display "Expected there to be a #{region} region"
     end 
     
     def negative_failure_message    
       super
-      "Did no expected there to be a #{region} region"
+      display "Did no expected there to be a #{region} region"
     end               
     
     protected

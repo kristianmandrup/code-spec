@@ -12,12 +12,12 @@ module RSpec::RubyContentMatchers
 
     def failure_message  
       super
-      "Expected there to be the subclass #{full_class} of #{superclass}"
+      display "Expected there to be the subclass #{full_class} of #{superclass}"
     end 
 
     def negative_failure_message
       super
-      "Did no expected there to be the subclass #{full_class} of #{superclass}"
+      display "Did no expected there to be the subclass #{full_class} of #{superclass}"
     end   
 
     protected 

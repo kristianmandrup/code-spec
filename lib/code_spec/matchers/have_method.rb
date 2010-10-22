@@ -22,12 +22,12 @@ module RSpec::RubyContentMatchers
   
     def failure_message
       super
-      "Expected there to be the #{class_msg} method #{method}, but there wasn't"
+      display "Expected there to be the #{class_msg} method #{method}, but there wasn't"
     end 
     
     def negative_failure_message                                      
       super
-      "Did not expect there to be the #{class_msg} method #{method}, but there was"
+      display "Did not expect there to be the #{class_msg} method #{method}, but there was"
     end
 
     protected

@@ -63,7 +63,6 @@ describe 'method call matcher' do
       migration_klass.should have_class_method :up
   
       migration_klass.should have_class_method :down do |down|
-        puts down
         down.should have_call 'drop_table', :users
       end
   
